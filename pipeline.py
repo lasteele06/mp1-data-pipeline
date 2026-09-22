@@ -1,11 +1,9 @@
 import argparse
 import logging
 import sys
-from unicodedata import name
-import verbose
 from pathlib import Path
 
-logger = logging.getLogger(name)
+logger = logging.getLogger(__name__)
 
 def setup_logging(verbose=False):
     if verbose:
@@ -21,18 +19,27 @@ def setup_logging(verbose=False):
     pass
 
 def parse_arguments():
-
-    pass
+    parser = argparse.ArgumentParser(description="A simple data pipeline")
+    parser.add_argument("--verbose", action="store_true", help="Enable verbose logging")
+    parser.add_argument("--input", required=True, help="Path to the input file")
+    parser.add_argument("--output", required=True, help="Path to the output file")
+    return parser.parse_args()
 
 def validate_input(filepath):
+    path= Path(filepath)
 
-    pass
+    if not path.exists():
+        logger.error(f"Input file {filepath} does not exist.")
+        return False
+    return True
 
 def main():
-
+    setup_logging(args.verbose)
+    args = parse_arguments()
+    validate_input(args.input)
     pass
 
-if __name__ =+ "__main__":
-main()
+if __name__ == "__main__":
+    main()
     
     
