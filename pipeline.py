@@ -20,24 +20,32 @@ def setup_logging(verbose=False):
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description="A simple data pipeline")
-    parser.add_argument("--verbose", action="store_true", help="Enable verbose logging")
-    parser.add_argument("--input", required=True, help="Path to the input file")
-    parser.add_argument("--output", required=True, help="Path to the output file")
+    parser.add_argument("--verbose", "-v", action="store_true", help="Enable verbose logging")
+    parser.add_argument("--input", "-i", required=True, help="Path to the input file")
+    parser.add_argument("--output", "-o", required=True, help="Path to the output file")
+    parser.add_argument("--format", "-f", choices=["csv", "json"], default="csv", help="Output file format (default: csv)")
     return parser.parse_args()
 
 def validate_input(filepath):
     path= Path(filepath)
 
-    if not path.exists():
+    if not path.is_file():
         logger.error(f"Input file {filepath} does not exist.")
         return False
+    logger.info(f"Input file validated: {filepath}")
     return True
 
 def main():
     args = parse_arguments()
     setup_logging(args.verbose)
-    validate_input(args.input)
-    pass
+    logger.debug(
+        f"Arguments parsed: input={args.input}, "
+        f"output={args.output}, format={args.format}"
+    )
+
+    if not validate_input(args.input):
+        sys.exit(1)
+    
 
 if __name__ == "__main__":
     main()
