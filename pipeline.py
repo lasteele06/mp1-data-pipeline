@@ -34,8 +34,8 @@ def validate_input(filepath):
     return True
 
 def main():
-    setup_logging(args.verbose)
     args = parse_arguments()
+    setup_logging(args.verbose)
     validate_input(args.input)
     pass
 
