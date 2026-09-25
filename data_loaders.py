@@ -12,8 +12,8 @@ logger = logging.getLogger(__name__)
 
 
 def load_csv(filepath):
-    df = pd.read_cvs(filepath)
-    logger.info(f"Loaded CSV file: {filepath}")
+    df = pd.read_csv(filepath)
+    logger.info(f"Loaded CSV file: {filepath} ({len(df)} rows)")
 
     pass
 
