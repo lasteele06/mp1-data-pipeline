@@ -22,11 +22,7 @@ def setup_logging(verbose=False):
 def parse_arguments():
     parser = argparse.ArgumentParser(description="A simple data pipeline")
 
-    parser.add_argument(
-        "--verbose", "-v",
-        action="store_true",
-        help="Enable verbose logging"
-    )
+    parser.add_argument("--verbose", "-v",action="store_true",help="Enable verbose logging")
 
     parser.add_argument(
         "--input", "-i",

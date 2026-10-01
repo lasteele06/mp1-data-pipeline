@@ -15,21 +15,21 @@ def load_csv(filepath):
     df = pd.read_csv(filepath)
     logger.info(f"Loaded CSV file: {filepath} ({len(df)} rows)")
 
-    pass
+    
 
 
 def load_json(filepath):
     dj = json.load(open(filepath))
     logger.info(f"Loaded JSON file: {filepath}")
     
-    pass
+    
 
 
 def load_yaml(filepath):
     dy = yaml.safe_load(open(filepath))
     logger.info(f"Loaded YAML file: {filepath}")
     
-    pass
+    
 
 
 def load_data(filepath):
