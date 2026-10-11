@@ -1,8 +1,13 @@
-# Python cache
+# Virtual Machine
 venv/
+
+# Python cache
 __pycache__/
 *.py[cod]
 *.pyc
+
+#Generated output
+output/
 
 # IDE
 .vscode/
