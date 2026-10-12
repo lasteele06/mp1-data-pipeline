@@ -1,3 +1,9 @@
 # MP1 Data Pipeline
 
 This project is a command-line data cleaning pipeline that receives an input dataset, validates the data, cleans it using the configuration file, and saves the cleaned results to a new CSV file. The program first checks if both input and configuration file exists, then both files are loaded and makes sure required columns exist. MP1 checks for numeric columns such as rating and removes rows containing any invalid numeric values. After validation, it will check for duplicate rows and missing values and remove them. MP1 also checks for outliers using either the IQR method or Z-score method. After the data is cleaned, the program saves the final dataset to a new CSV file and prints a report showing how many rows and columns have been removed. 
+
+## Example
+
+python pipeline.py --input fixtures/sample_data.csv --output output/clean.csv --config config/config.yaml --verbose
+
+This command loads the sample dataset, validates and cleans the data based on the configuration settings, saves the cleaned dataset to `output/clean.csv`, and prints a cleaning report.
